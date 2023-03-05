@@ -1,9 +1,12 @@
 [tool.poetry]
-name = "onkodicom"
+name = "OnkoDICOM"
 version = "0.5.2"
-description = ""
+description = "OnkoDICOM is an extensible open source radiation therapy research platform based on the DICOM standard."
 authors = ["Ashley Maher <ashley.maher@didymodesigns.com.au>"]
-license = "LGPL"
+license = "LGPL-2.1"
+readme = "README.md"
+homepage = "https://onkodicom.com.au/"
+repository = "https://github.com/didymo/OnkoDICOM"
 
 [poetry.virtualenvs]
 create = true
@@ -40,7 +43,7 @@ imblearn = { version = "*"}  # groups = ["user", "dev"]
 kaplanmeier = { version = "*"}  # groups = ["user", "dev"]
 pyinstaller = "^5.5"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pylint = { version = "*", optional = false }  # groups = ["dev"]
 pytest = { version = "*", optional = false }  # groups = ["dev"]
 pytest-black = { version = "*", optional = false }  # groups = ["dev"]
