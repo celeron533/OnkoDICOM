@@ -46,7 +46,7 @@ jobs:
     - name: Poetry Install Dependencies (no venv)
       run: |
         poetry config virtualenvs.create false --local
-        poetry install -v
+        poetry install --no-root -v
 
     - name: Linting setup
       run: |
