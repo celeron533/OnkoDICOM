@@ -14,9 +14,6 @@ in-project = true
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-cython = "*"
-numpy = "^1.22.0"
-platipy ="*"
 alphashape = "*"
 pandas = "*"
 scikit-build = "*"
@@ -33,7 +30,7 @@ pyside6 ="6.2.0"
 vtk = "*" 
 shapely = ">=1.8.1,<2.0"
 python-Levenshtein = "*"
-opencv-python = "*"
+opencv-python = "<4.6"
 matplotlib = "*"
 pyradiomics = "*"
 scikit-learn = "*"
@@ -41,6 +38,10 @@ imblearn = "*"
 kaplanmeier = "*"
 pyinstaller = "*"
 
+[tool.poetry.group.pre.dependencies]
+cython = "*"
+numpy = "^1.22.0"
+platipy ="*"
 
 [tool.poetry.group.dev.dependencies]
 pylint ="*"

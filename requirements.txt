@@ -16,7 +16,7 @@ vtk
 matplotlib
 shapely>=1.8.1,<2.0
 python-Levenshtein
-opencv-python
+opencv-python<4.6
 scikit-learn
 imblearn
 kaplanmeier
