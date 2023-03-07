@@ -15,7 +15,7 @@ in-project = true
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
 cython = "*"
-numpy = "*"
+numpy = "^1.22.0"
 platipy ="*"
 alphashape = "*"
 pandas = "*"
