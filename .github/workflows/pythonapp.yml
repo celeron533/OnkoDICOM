@@ -35,8 +35,13 @@ jobs:
     #     pip install -r dev-requirements.txt
 
     - name: Install Poetry
-    # 1.4.0 has bug
-      run: curl -sSL https://install.python-poetry.org | python3 - --version=1.3.2
+      run: curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Workaround Install pyradiomics (no-use-pep517)
+    # https://github.com/AIM-Harvard/pyradiomics/issues/653#issuecomment-1245039225
+      run: |
+        pip install numpy 
+        pip install pyradiomics==3.0.1 --no-use-pep517
 
     - name: Poetry Install Dependencies (no venv)
       run: |
