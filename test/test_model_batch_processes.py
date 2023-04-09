@@ -2,6 +2,7 @@ import csv
 import os
 import pytest
 import os.path
+from shutil import copy
 import pandas as pd
 from pathlib import Path
 from pydicom import dcmread
@@ -628,8 +629,11 @@ def test_batch_roi_name_cleaning(test_object):
         # Assert rtss exists
         assert rtss_path is not None
         assert os.path.exists(rtss_path)
+        # Avoid to modify the original test file
+        rtss_path_test = rtss_path + '.temp.dcm'
+        copy(rtss_path, rtss_path_test)
 
-        ds = dcmread(rtss_path)
+        ds = dcmread(rtss_path_test)
         number_rois = len(ds.StructureSetROISequence)
 
         # Create and setup the Batch Process
@@ -638,15 +642,15 @@ def test_batch_roi_name_cleaning(test_object):
                                               None)
 
         # Set options (rename LUNGS to Lungs, delete ISO0760)
-        roi_options = {'LUNGS': [[1, 'Lungs', rtss_path]],
-                       'ISO0760': [[2, 'Adrenal_L', rtss_path]]}
+        roi_options = {'LUNGS': [[1, 'Lungs', rtss_path_test]],
+                       'ISO0760': [[2, 'Adrenal_L', rtss_path_test]]}
         process.roi_options = roi_options
 
         # Start the process
         process.start()
 
         # Assert the number of ROIs decreased by one
-        ds = dcmread(rtss_path)
+        ds = dcmread(rtss_path_test)
         new_number_rois = len(ds.StructureSetROISequence)
         assert new_number_rois <= number_rois
 
