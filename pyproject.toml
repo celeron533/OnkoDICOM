@@ -7,6 +7,9 @@ license = "LGPL"
 readme = "README.md"
 homepage = "https://onkodicom.com.au/"
 repository = "https://github.com/didymo/OnkoDICOM"
+packages = [
+    {include = "src"}
+]
 
 [poetry.virtualenvs]
 create = true
